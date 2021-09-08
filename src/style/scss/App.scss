@@ -1,0 +1,18 @@
+@import 'header';
+@import 'createaccount';
+@import 'bankservices';
+@import 'ledger';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: ProximaNova, Helvetica;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+}

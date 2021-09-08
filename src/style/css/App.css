@@ -1,0 +1,218 @@
+.header {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-height: 8vh;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.header img {
+  height: 6vh;
+  width: auto;
+}
+
+.header .header-image {
+  padding-left: 5px;
+}
+
+.header .header-burger {
+  padding-right: 5px;
+}
+
+.create-account {
+  height: 32%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url(https://st.depositphotos.com/1062085/2561/i/600/depositphotos_25616917-stock-photo-businesswoman-using-a-credit-card.jpg);
+  background-repeat: no-repeat;
+  background-size: 300%;
+}
+
+.create-account .create-account-text {
+  text-align: center;
+  font-size: 2em;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.create-account .create-account-text p {
+  color: #b11216;
+}
+
+.create-account .create-account-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create-account .create-account-form input {
+  margin: 5px;
+  border-radius: 10px;
+  height: 5vh;
+  width: 50vw;
+  text-indent: 10px;
+}
+
+.create-account .create-account-form button {
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 8px 15px;
+  background-color: #b11216;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+}
+
+.services-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+}
+
+.services-container h3 {
+  font-size: 24px;
+  color: #4a4a4a;
+  padding: 10px 0px 0px 10px;
+}
+
+.services-container .services fieldset {
+  border: 1px solid #e9e9e9;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.services-container .services legend {
+  font-weight: 700;
+  color: #b11216;
+}
+
+.services-container .services input {
+  margin-top: 3px;
+  border-radius: 10px;
+  height: 5vh;
+  width: 85vw;
+  text-indent: 15px;
+  border: 0.5px solid #e9e9e9;
+}
+
+.services-container .services button {
+  border-radius: 8px;
+  padding: 8px 15px;
+  background-color: #b11216;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+}
+
+.ledger h3 {
+  font-size: 24px;
+  color: #4a4a4a;
+  padding: 10px 0px 0px 10px;
+}
+
+.ledger #ledger-container {
+  margin: 20px auto;
+}
+
+.ledger #ledger-container #ledger-header-row {
+  display: table;
+  width: 90%;
+  margin: 10px auto;
+  background-color: #b11216;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 15px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+}
+
+.ledger #ledger-container #ledger-header-row .ledger-header-cell {
+  display: table-cell;
+  width: 25%;
+  text-align: center;
+  padding: 4px 0;
+  vertical-align: middle;
+  border-right: 1px solid #d6d4d4;
+}
+
+.ledger #ledger-container #ledger-row {
+  display: table;
+  width: 90%;
+  margin: 1px auto;
+  background-color: #7e7c7c;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+.ledger #ledger-container #ledger-row .ledger-cell {
+  display: table-cell;
+  width: 25%;
+  text-indent: 10px;
+  padding: 4px 0;
+  vertical-align: middle;
+  border-right: 1px solid #fff;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: ProximaNova, Helvetica;
+}
+
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 2000px;
+}
+/*# sourceMappingURL=App.css.map */
