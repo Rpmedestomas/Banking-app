@@ -16,3 +16,26 @@
     flex-direction: column;
     height: 2000px;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+   
+  th,
+  td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+  }
+   
+  th {
+    background-color: #b11216;
+    color: #fff;
+    text-align: center;
+
+  }
+   
+  td {
+    background-color: rgb(233, 233, 233);
+    text-align: left;
+  }
