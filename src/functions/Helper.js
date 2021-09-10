@@ -35,7 +35,7 @@ export default function Helper() {
             id: nanoid(),
             fullName: addFormData.fullName,
             address: addFormData.address,
-            phoneNumber: addFormData.phoneNumber,
+            balance: addFormData.balance,
             email: addFormData.email,
         };
 
@@ -50,7 +50,7 @@ export default function Helper() {
          const formValues = {
              fullName: contact.fullName,
              address: contact.address,
-             phoneNumber: contact.phoneNumber,
+             balance: contact.balance,
              email: contact.email
          }
          setEditFormData(formValues);
@@ -64,7 +64,7 @@ export default function Helper() {
             id: editContactId,
             fullName: editFormData.fullName,
             address: editFormData.address,
-            phoneNumber: editFormData.phoneNumber,
+            balance: editFormData.balance,
             email: editFormData.email
         }
 

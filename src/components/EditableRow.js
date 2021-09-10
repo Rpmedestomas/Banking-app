@@ -25,11 +25,11 @@ const EditableRow = ({editFormData, handleEditFormChange, handleCancelClick}) =>
             </td>
             <td>
                 <input 
-                    type="text" 
+                    type="number" 
                     required="required" 
-                    placeholder="Enter Phone Number" 
-                    name="phoneNumber"
-                    value={editFormData.phoneNumber}
+                    placeholder="Enter Initial Deposit " 
+                    name="balance"
+                    value={editFormData.balance}
                     onChange={handleEditFormChange}
                 />
             </td>

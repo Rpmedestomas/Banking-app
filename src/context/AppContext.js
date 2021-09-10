@@ -10,14 +10,14 @@ export default function AppProvider(props) {
     const [addFormData,setAddFormData] = useState({
       fullName: '',
       address: '',
-      phoneNumber: '',
+      balance: '',
       email: ''
     })
    
     const [editFormData, setEditFormData] = useState({
       fullName: '',
       address: '',
-      phoneNumber: '',
+      balance: '',
       email: ''
     })
    
@@ -39,8 +39,6 @@ export default function AppProvider(props) {
         setEditFormData,
         setEditContactId
     }
-
-    // console.table(state, func, props);
     
     return (
         <AppContext.Provider value={{ ...state, ...func}}>

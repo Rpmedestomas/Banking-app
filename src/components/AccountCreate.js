@@ -26,10 +26,10 @@ function Accountcreate() {
             />
 
             <input 
-              type="text" 
-              name="phoneNumber" 
+              type="number" 
+              name="balance" 
               required="required" 
-              placeholder="Enter Phone Number"
+              placeholder="Enter Initial Deposit"
               onChange={HandleAddFormChange}
             />
 
