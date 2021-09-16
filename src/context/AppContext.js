@@ -38,6 +38,20 @@ export default function AppProvider(props) {
       balance: ''
     })
 
+    const [transferOriginFormData, setTransferOriginFormData] = useState({
+      userName: '',
+      balance: '',
+      password: ''
+    })
+
+    const [transferReceiveFormData, setTransferReceiveFormData] = useState({
+      userName: '',
+      balance: '',
+      password: ''
+    })
+
+
+
     const state = {
         contact,
         contacts,
@@ -45,7 +59,9 @@ export default function AppProvider(props) {
         editFormData,
         editContactId,
         withdrawFormData,
-        depositFormData
+        depositFormData,
+        transferOriginFormData,
+        transferReceiveFormData
     }
 
     const func = {
@@ -56,6 +72,8 @@ export default function AppProvider(props) {
         setEditContactId,
         setWithdrawFormData,
         setDepositFormData,
+        setTransferOriginFormData,
+        setTransferReceiveFormData
     }
     
     return (

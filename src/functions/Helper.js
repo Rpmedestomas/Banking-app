@@ -12,6 +12,8 @@ export default function Helper() {
         editContactId,
         withdrawFormData,
         depositFormData,
+        transferOriginFormData,
+        transferReceiveFormData,
         setContact,
         setContacts,
         setAddFormData,
@@ -19,6 +21,8 @@ export default function Helper() {
         setEditContactId,
         setWithdrawFormData,
         setDepositFormData,
+        setTransferOriginFormData,
+        setTransferReceiveFormData
     } =  useContext(AppContext)
 
 //Gets all the value from the input boxes on the accountCreate section
@@ -169,16 +173,29 @@ export default function Helper() {
         e.preventDefault();        
         
         //Direct update of balance to localStorage
-        const searchUserName = withdrawFormData.userName
-        // const searchPassword = withdrawFormData.password
-        const userInfo = [...contacts]
-        const index = contacts.findIndex((contact) => contact.userName === searchUserName)
-        const matchLS = userInfo[index]
+        const searchUserNameWithdraw = withdrawFormData.userName
+        const searchPassword = withdrawFormData.password
+        const userInfoWithdraw = [...contacts]
+        const indexWithdraw = contacts.findIndex((contact) => contact.userName === searchUserNameWithdraw)
+        const matchWithdraw = userInfoWithdraw[indexWithdraw]
      
-        const updatedBalance = parseFloat(matchLS.balance) - parseFloat(withdrawFormData.balance)
-        setContacts([...contacts], matchLS.balance = updatedBalance)
-        localStorage.setItem("newContacts",JSON.stringify(contacts))
-        console.log(matchLS)   
+        if ( matchWithdraw !== undefined){
+            if( matchWithdraw.password === searchPassword){
+                if( matchWithdraw.balance >= withdrawFormData.balance){
+                    const updatedBalanceWithdraw = parseFloat(matchWithdraw.balance) - parseFloat(withdrawFormData.balance)
+                    setContacts([...contacts], matchWithdraw.balance = updatedBalanceWithdraw)
+                    localStorage.setItem("newContacts",JSON.stringify(contacts))
+                    alert(`Success`)
+                } else{
+                    alert(`insufficient balance`)
+                }
+            } else {
+                alert(`password is incorrect`)
+            }
+        } else{
+            alert(searchUserNameWithdraw + ` does not exist`)
+        }
+        console.log(matchWithdraw)
     }
 
     ////////Deposit
@@ -200,18 +217,81 @@ export default function Helper() {
         e.preventDefault();
 
         //Direct update of balance to localStorage
-        const searchUserName = depositFormData.userName
-        const userInfo = [...contacts]
-        const index = contacts.findIndex((contact) => contact.userName === searchUserName)
-        const matchLS = userInfo[index]
+        const searchUserNameDeposit = depositFormData.userName
+        const userInfoDeposit = [...contacts]
+        const indexDeposit = contacts.findIndex((contact) => contact.userName === searchUserNameDeposit)
+        const matchDeposit = userInfoDeposit[indexDeposit]
         
-        const updatedBalance = parseFloat(matchLS.balance) + parseFloat(depositFormData.balance)
-        setContacts([...contacts], matchLS.balance = updatedBalance)
-        localStorage.setItem("newContacts",JSON.stringify(contacts))
-        console.log(matchLS)
-
+        if( matchDeposit !== undefined){
+            const updatedBalanceDeposit = parseFloat(matchDeposit.balance) + parseFloat(depositFormData.balance)
+            setContacts([...contacts], matchDeposit.balance = updatedBalanceDeposit)
+            localStorage.setItem("newContacts",JSON.stringify(contacts))
+            alert(`Success`)
+        } else{
+            alert(searchUserNameDeposit + ` does not exist`)
+        }
     }
 
+    ////////Transfer
+    function HandleTransferOriginFormChange(e){
+
+        e.preventDefault();
+        
+        const fieldName = e.target.getAttribute('name');
+        const fieldValue = e.target.value;
+
+        const newTransferOriginFormData = { ...transferOriginFormData};
+        newTransferOriginFormData[fieldName] = fieldValue;
+
+        //Changes the state of addFormData to the newly inputted values
+        setTransferOriginFormData(newTransferOriginFormData);
+    }
+
+    function HandleTransferReceiveFormChange(e){
+
+        e.preventDefault();
+        
+        const fieldName = e.target.getAttribute('name');
+        const fieldValue = e.target.value;
+
+        const newTransferReceiveFormData = { ...transferReceiveFormData};
+        newTransferReceiveFormData[fieldName] = fieldValue;
+
+        //Changes the state of addFormData to the newly inputted values
+        setTransferReceiveFormData(newTransferReceiveFormData);
+    }
+    
+    function HandleTransferFormSubmit(e){
+        e.preventDefault();
+
+        //Direct update of balance to localStorage
+        const searchUserNameTransferOrigin = transferOriginFormData.userName
+        const searchPassword = transferOriginFormData.password
+
+        const searchUserNameTransferReceive = transferReceiveFormData.userName
+
+        const userInfoTransfer = [...contacts]
+
+        const indexTransferOrigin = contacts.findIndex((contact) => contact.userName === searchUserNameTransferOrigin)
+        const matchTransferOrigin = userInfoTransfer[indexTransferOrigin]
+
+        const indexTransferReceive = contacts.findIndex((contact) => contact.userName === searchUserNameTransferReceive)
+        const matchTransferReceive = userInfoTransfer[indexTransferReceive]
+        
+        if(matchTransferOrigin !== undefined){
+            if( matchTransferOrigin.password === searchPassword){
+                if( matchTransferOrigin.balance >= transferOriginFormData.balance){
+                    if(matchTransferReceive !== undefined){
+                        const updatedBalanceTransferOrigin = parseFloat(matchTransferOrigin.balance) - parseFloat(transferOriginFormData.balance)
+                        const updatedBalanceTransferReceive = parseFloat(matchTransferReceive.balance) + parseFloat(transferOriginFormData.balance)
+                        setContacts([...contacts], matchTransferOrigin.balance = updatedBalanceTransferOrigin, matchTransferReceive.balance = updatedBalanceTransferReceive)
+                        localStorage.setItem("newContacts",JSON.stringify(contacts))
+                        alert(`Success`)
+                    } else{ alert(searchUserNameTransferReceive + ` does not exist`)}
+                } else{ alert(`insufficient balance`)}
+            } else { alert(`password is incorrect`)}
+        } else { alert(searchUserNameTransferOrigin + ` does not exist`)}
+    }
 
     return{
         contact,
@@ -236,6 +316,9 @@ export default function Helper() {
         HandleWithdrawFormChange,
         HandleWithdrawFormSubmit,
         HandleDepositFormChange,
-        HandleDepositFormSubmit
+        HandleDepositFormSubmit,
+        HandleTransferOriginFormChange,
+        HandleTransferReceiveFormChange,
+        HandleTransferFormSubmit
     }
 }
