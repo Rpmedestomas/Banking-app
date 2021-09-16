@@ -10,21 +10,15 @@ export default function Helper() {
         addFormData,
         editFormData,
         editContactId,
-        depositContactInfo,
+        withdrawFormData,
         depositFormData,
-        // balance1,
-        // balance2,
-        // balance3,
         setContact,
         setContacts,
         setAddFormData,
         setEditFormData,
         setEditContactId,
-        setDepositContactInfo,
+        setWithdrawFormData,
         setDepositFormData,
-        // setBalance1,
-        // setBalance2,
-        // setBalance3
     } =  useContext(AppContext)
 
 //Gets all the value from the input boxes on the accountCreate section
@@ -151,14 +145,47 @@ export default function Helper() {
         setEditContactId(null);
     };
 
+
+
+
 ////////////// BANK SERVICES
 
+    ////////Withdraw
+    function HandleWithdrawFormChange(e){
+
+        e.preventDefault();
+        
+        const fieldName = e.target.getAttribute('name');
+        const fieldValue = e.target.value;
+
+        const newWithdrawFormData = { ...withdrawFormData};
+        newWithdrawFormData[fieldName] = fieldValue;
+
+        //Changes the state of addFormData to the newly inputted values
+        setWithdrawFormData(newWithdrawFormData);
+    }
+
+    function HandleWithdrawFormSubmit(e){
+        e.preventDefault();        
+        
+        //Direct update of balance to localStorage
+        const searchUserName = withdrawFormData.userName
+        // const searchPassword = withdrawFormData.password
+        const userInfo = [...contacts]
+        const index = contacts.findIndex((contact) => contact.userName === searchUserName)
+        const matchLS = userInfo[index]
+     
+        const updatedBalance = parseFloat(matchLS.balance) - parseFloat(withdrawFormData.balance)
+        setContacts([...contacts], matchLS.balance = updatedBalance)
+        localStorage.setItem("newContacts",JSON.stringify(contacts))
+        console.log(matchLS)   
+    }
+
+    ////////Deposit
     function HandleDepositFormChange(e){
 
         e.preventDefault();
         
-
-        //////////
         const fieldName = e.target.getAttribute('name');
         const fieldValue = e.target.value;
 
@@ -171,26 +198,18 @@ export default function Helper() {
 
      function HandleDepositFormSubmit(e){
         e.preventDefault();
-        
-        const searchUserName = depositFormData.userName
-        const index = contacts.findIndex((contact) => contact.userName === searchUserName)
-        const match = contacts[index]
 
-        if (match === undefined){
-            console.log(searchUserName + ` does not exist`)
-            } else{
-                const newBal = parseFloat(depositFormData.balance) + parseFloat(match['balance'])
-                const insertNewDepositFormData = {
-                    balance: newBal,
-                    userName: depositFormData.userName}
-                 
-                setDepositFormData(insertNewDepositFormData)
-                // setNewContacts(depositFormData)
-                // localStorage.setItem("newContacts", JSON.stringify(newContacts))
-                alert('working')
-                console.log(depositFormData)
-                console.log(newBal)
-        }
+        //Direct update of balance to localStorage
+        const searchUserName = depositFormData.userName
+        const userInfo = [...contacts]
+        const index = contacts.findIndex((contact) => contact.userName === searchUserName)
+        const matchLS = userInfo[index]
+        
+        const updatedBalance = parseFloat(matchLS.balance) + parseFloat(depositFormData.balance)
+        setContacts([...contacts], matchLS.balance = updatedBalance)
+        localStorage.setItem("newContacts",JSON.stringify(contacts))
+        console.log(matchLS)
+
     }
 
 
@@ -200,21 +219,13 @@ export default function Helper() {
         addFormData,
         editFormData,
         editContactId,
-        depositContactInfo,
         depositFormData,
-        // balance1,
-        // balance2,
-        // balance3,
         setContact,
         setContacts,
         setAddFormData,
         setEditFormData,
         setEditContactId,
-        setDepositContactInfo,
         setDepositFormData,
-        // setBalance1,
-        // setBalance2,
-        // setBalance3,
         HandleAddFormChange,
         HandleAddFormSubmit,
         HandleEditFormChange,
@@ -222,6 +233,8 @@ export default function Helper() {
         HandleCancelClick,
         HandleDeleteClick,
         HandleEditClick,
+        HandleWithdrawFormChange,
+        HandleWithdrawFormSubmit,
         HandleDepositFormChange,
         HandleDepositFormSubmit
     }

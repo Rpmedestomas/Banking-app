@@ -5,32 +5,57 @@ import Helper from '../functions/Helper'
 function Bankservices() {
 
     const {
-        // balance1,
-        // balance2,
-        // balance3,
+        HandleWithdrawFormChange,
+        HandleWithdrawFormSubmit,
         HandleDepositFormChange,
         HandleDepositFormSubmit}  = Helper()
+        // HandleTransferFormChange,
+        // HandleTransferFormSubmit
 
     return (
         <div className="services-container">
             <h3>Bank Services:</h3>
             <div id="services-withdraw" className="services">
-                <form>
+                <form onSubmit={HandleWithdrawFormSubmit}>
                     <legend>Withdraw</legend>
                     <div>
                             <label for="withdrawal-username"> Username:  </label>
                         <br/>
-                            <input id="withdrawal-username" type="text" name="username" placeholder="Input username"/>
+                            <input 
+                            id="withdrawal-username" 
+                            type="text" 
+                            name="username" 
+                            required="required"
+                            placeholder="Input username"
+                            onChange={HandleWithdrawFormChange}
+                            />
                         <br/>
                         <br/>
                             <label for="withdrawal-amount"> Amount:  </label>
                         <br/>
-                            <input id="withdrawal-amount" type="number" name="amount" placeholder="Amount to be withdrawn"/>
+                            <input 
+                            id="withdrawal-amount" 
+                            type="number"
+                            min= "0.000"
+                            step="0.001"
+                            precision={2}
+                            name="balance"
+                            required="required"
+                            placeholder="Amount to be withdrawn"
+                            onChange={HandleWithdrawFormChange}
+                            />
                         <br/>
                         <br/>
                             <label for="withdrawal-password"> Password:  </label>
                         <br/>
-                            <input id="withdrawal-password" type="text" name="password" placeholder="Input password"/>
+                            <input 
+                            id="withdrawal-password" 
+                            type="text" 
+                            name="password" 
+                            required="required"
+                            placeholder="Input password"
+                            onChange={HandleWithdrawFormChange}
+                            />
                         <br/>
                         <br/>
                             <button type="submit">submit</button>

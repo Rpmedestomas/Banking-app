@@ -27,11 +27,9 @@ export default function AppProvider(props) {
     const [editContactId, setEditContactId] = useState(null);
 
     ////////Bank Services
-    const [depositContactInfo, setDepositContactInfo] = useState({
-      id: '',
-      fullName: '',
+    const [withdrawFormData, setWithdrawFormData] = useState({
       userName: '',
-      email: '',
+      balance: '',
       password: ''
     })
 
@@ -40,30 +38,14 @@ export default function AppProvider(props) {
       balance: ''
     })
 
-    // const [insertNewDepositFormData, setInsertNewDepositFormData] = useState({
-    //   userName: '',
-    //   balance: ''
-    // })
-
-    // const [balance1, setBalance1] = useState(0)
-    // const [balance2, setBalance2] = useState(0)
-    // const [balance3, setBalance3] = useState(0)
-
-
-
-    
-
     const state = {
         contact,
         contacts,
         addFormData,
         editFormData,
         editContactId,
-        depositContactInfo,
-        depositFormData,
-        // balance1,
-        // balance2,
-        // balance3
+        withdrawFormData,
+        depositFormData
     }
 
     const func = {
@@ -72,11 +54,8 @@ export default function AppProvider(props) {
         setAddFormData,
         setEditFormData,
         setEditContactId,
-        setDepositContactInfo,
+        setWithdrawFormData,
         setDepositFormData,
-        // setBalance1,
-        // setBalance2,
-        // setBalance3
     }
     
     return (
