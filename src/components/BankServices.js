@@ -11,7 +11,8 @@ function Bankservices() {
         HandleDepositFormSubmit,
         HandleTransferOriginFormChange,
         HandleTransferReceiveFormChange,
-        HandleTransferFormSubmit}  = Helper()
+        HandleTransferFormSubmit
+    }  = Helper()
 
     return (
         <div className="services-container">
