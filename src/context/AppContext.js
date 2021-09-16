@@ -9,19 +9,48 @@ export default function AppProvider(props) {
     const [contacts,setContacts] = useState(data);
     const [addFormData,setAddFormData] = useState({
       fullName: '',
-      address: '',
+      userName: '',
+      email: '',
       balance: '',
-      email: ''
+      password: ''
+      
     })
    
     const [editFormData, setEditFormData] = useState({
       fullName: '',
-      address: '',
+      userName: '',
+      email: '',
       balance: '',
-      email: ''
+      password: ''
     })
    
     const [editContactId, setEditContactId] = useState(null);
+
+    ////////Bank Services
+    const [depositContactInfo, setDepositContactInfo] = useState({
+      id: '',
+      fullName: '',
+      userName: '',
+      email: '',
+      password: ''
+    })
+
+    const [depositFormData, setDepositFormData] = useState({
+      userName: '',
+      balance: ''
+    })
+
+    // const [insertNewDepositFormData, setInsertNewDepositFormData] = useState({
+    //   userName: '',
+    //   balance: ''
+    // })
+
+    // const [balance1, setBalance1] = useState(0)
+    // const [balance2, setBalance2] = useState(0)
+    // const [balance3, setBalance3] = useState(0)
+
+
+
     
 
     const state = {
@@ -29,7 +58,12 @@ export default function AppProvider(props) {
         contacts,
         addFormData,
         editFormData,
-        editContactId
+        editContactId,
+        depositContactInfo,
+        depositFormData,
+        // balance1,
+        // balance2,
+        // balance3
     }
 
     const func = {
@@ -37,7 +71,12 @@ export default function AppProvider(props) {
         setContacts,
         setAddFormData,
         setEditFormData,
-        setEditContactId
+        setEditContactId,
+        setDepositContactInfo,
+        setDepositFormData,
+        // setBalance1,
+        // setBalance2,
+        // setBalance3
     }
     
     return (

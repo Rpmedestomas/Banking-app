@@ -1,50 +1,21 @@
 import React from 'react'
-import { useState } from 'react'
+import Helper from '../functions/Helper'
+
 
 function Bankservices() {
-    const [withdrawBalance, setWithdrawBalance] = useState(0);
-    const withdrawAmt = 0;
-    const withdrawUsr = '';
 
-    const [depositBalance, setDepositBalance] = useState(0);
-    const depositAmt = 0;
-    const depositUsr = '';
-
-    function WithdrawSvc(){
-        // Parent if statement that checks if the account of origin (withdrawal) exists. Else prompt "Account does not exist"
-        // if ({user} === )
-            if (withdrawBalance >= withdrawAmt){
-                setWithdrawBalance(withdrawBalance - {withdrawAmt})
-            } else {
-                console.log(`You only have ${withdrawBalance} in your account. You are unable to withdraw.`)
-            }
-    }
-
-    function DepositSvc(){
-        // if statement that checks if the account of destination (deposit) exists. Else prompt "Account does not exist"
-        // if ({user} === )
-
-        setDepositBalance(depositBalance + {depositAmt})
-    }
-
-    // balance1 is origin account 
-    // balance2 is receiver account
-    function TransferSvc(){
-        // If statement to check if the account origin exist (USE: &&, else ||) if receiving account exists. then we can proceed transfer if 
-        // if ({user} === )
-            if (withdrawBalance >= withdrawAmt){
-                setWithdrawBalance(withdrawBalance - {withdrawAmt});
-                setDepositBalance(depositBalance + {withdrawAmt});
-                } else {
-                    console.log(`You only have ${withdrawBalance} in your account. You are unable to withdraw.`);
-                } 
-    }
+    const {
+        // balance1,
+        // balance2,
+        // balance3,
+        HandleDepositFormChange,
+        HandleDepositFormSubmit}  = Helper()
 
     return (
         <div className="services-container">
             <h3>Bank Services:</h3>
             <div id="services-withdraw" className="services">
-                <fieldset>
+                <form>
                     <legend>Withdraw</legend>
                     <div>
                             <label for="withdrawal-username"> Username:  </label>
@@ -62,32 +33,49 @@ function Bankservices() {
                             <input id="withdrawal-password" type="text" name="password" placeholder="Input password"/>
                         <br/>
                         <br/>
-                            <button onClick={WithdrawSvc} type="submit">submit</button>
+                            <button type="submit">submit</button>
                     </div>
-                </fieldset>
+                </form>
             </div>
 
             <div id="services-deposit" class="services">
-                <fieldset>
+                <form onSubmit={HandleDepositFormSubmit}>
                     <legend>Deposit</legend>
                     <div>
                             <label for="deposit-username"> Username:  </label>
                         <br/>
-                            <input id="deposit-username" type="text" name="username" placeholder="Input username"/>
+                            <input 
+                                id="deposit-username" 
+                                type="text" 
+                                name="userName"
+                                required="required"
+                                placeholder="Input username"
+                                onChange={HandleDepositFormChange}
+                            />
                         <br/>
                         <br/>
                             <label for="deposit-amount"> Amount:  </label>
                         <br/>
-                            <input id="deposit-amount" type="number" name="amount" placeholder="Amount to be deposited"/>
+                            <input 
+                                id="deposit-amount" 
+                                type="number"
+                                min= "0.000"
+                                step="0.001"
+                                precision={2}
+                                name="balance" 
+                                required="required"
+                                // value={balance2}
+                                placeholder="Amount to be deposited"
+                                onChange={HandleDepositFormChange}/>
                         <br/>
                         <br/>
-                        <button onClick={DepositSvc} type="submit">submit</button>
+                        <button type="submit">submit</button>
                     </div>
-                </fieldset>
+                </form>
             </div>
 
             <div id="services-transfer" class="services">
-                <fieldset>
+                <form>
                     <legend>Transfer</legend>
                     <div>
                             <label for="transfer-from-username"> Sender's Username:  </label>
@@ -110,9 +98,9 @@ function Bankservices() {
                             <input id="transfer-password" type="text" name="password" placeholder="Input password"/>
                         <br/>
                         <br/>                    
-                            <button onClick={TransferSvc} type="submit">submit</button>
+                            <button type="submit">submit</button>
                     </div>
-                </fieldset>
+                </form>
             </div>
         </div>
     )

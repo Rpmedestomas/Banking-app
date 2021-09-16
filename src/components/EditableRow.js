@@ -2,8 +2,8 @@ import React from "react";
  
 const EditableRow = ({editFormData, handleEditFormChange, handleCancelClick}) => {
     return(
-        <tr>
-            <td>
+        <tr className="edit-table-container">
+            <td className="table-edit-content-container"> 
                 <input 
                     type="text" 
                     required="required" 
@@ -13,17 +13,19 @@ const EditableRow = ({editFormData, handleEditFormChange, handleCancelClick}) =>
                     onChange={handleEditFormChange}
                 />
             </td>
-            <td>
+            
+            <td className="table-edit-content-container">
                 <input 
                     type="text" 
                     required="required" 
-                    placeholder="Enter Address" 
-                    name="address"
-                    value={editFormData.address}
+                    placeholder="Enter Username" 
+                    name="userName"
+                    value={editFormData.userName}
                     onChange={handleEditFormChange}
                 />
             </td>
-            <td>
+
+            <td className="table-edit-content-container">
                 <input 
                     type="number" 
                     required="required" 
@@ -33,17 +35,8 @@ const EditableRow = ({editFormData, handleEditFormChange, handleCancelClick}) =>
                     onChange={handleEditFormChange}
                 />
             </td>
-            <td>
-                <input 
-                    type="email" 
-                    required="required" 
-                    placeholder="Enter Email" 
-                    name="email"
-                    value={editFormData.email}
-                    onChange={handleEditFormChange}
-                />  
-            </td>
-            <td>
+            
+            <td className="table-edit-button-container">
                 <button type="submit">Save</button>
                 <button type="button" onClick={handleCancelClick}>Cancel</button>
             </td>

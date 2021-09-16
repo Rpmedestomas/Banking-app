@@ -19,17 +19,9 @@ function Accountcreate() {
 
             <input 
               type="text" 
-              name="address" 
+              name="userName" 
               required="required" 
-              placeholder="Enter Address"
-              onChange={HandleAddFormChange}
-            />
-
-            <input 
-              type="number" 
-              name="balance" 
-              required="required" 
-              placeholder="Enter Initial Deposit"
+              placeholder="Enter Username"
               onChange={HandleAddFormChange}
             />
 
@@ -41,21 +33,25 @@ function Accountcreate() {
               onChange={HandleAddFormChange}
             />
 
-            {/* <input 
+            <input  
               type="number" 
               name="balance" 
               required="required" 
               placeholder="Enter Initial Deposit"
-              onChange={HandleAddFormChange}
-            /> */}
 
-            {/* <input 
+              min= "0.000"
+              step="0.001"
+              precision={2}
+              onChange={HandleAddFormChange}
+            />
+            
+            <input 
               type="text" 
               name="password" 
               required="required" 
               placeholder="Enter Password"
               onChange={HandleAddFormChange}
-            /> */}
+            />
 
            <button type="submit">submit</button>
        </form>
