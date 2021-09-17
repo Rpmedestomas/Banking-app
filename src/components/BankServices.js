@@ -21,21 +21,22 @@ function Bankservices() {
                 <form onSubmit={HandleWithdrawFormSubmit}>
                     <legend>Withdraw</legend>
                     <div>
-                            <label for="withdrawal-username"> Username:  </label>
+                        <label for="withdrawal-username"> Username:  </label>
                         <br/>
-                            <input 
+                        <input 
                             id="withdrawal-username" 
                             type="text" 
                             name="userName" 
                             required="required"
                             placeholder="Input username"
                             onChange={HandleWithdrawFormChange}
-                            />
+                        />
+                        <p id="errorUserNameWithdraw"> Username does not exist </p>
+
                         <br/>
+                        <label for="withdrawal-amount"> Amount:  </label>
                         <br/>
-                            <label for="withdrawal-amount"> Amount:  </label>
-                        <br/>
-                            <input 
+                        <input 
                             id="withdrawal-amount" 
                             type="number"
                             min= "0.000"
@@ -45,22 +46,25 @@ function Bankservices() {
                             required="required"
                             placeholder="Amount to be withdrawn"
                             onChange={HandleWithdrawFormChange}
-                            />
+                        />
+                        <p id="errorBalanceWithdraw"> Insufficient Balance </p>
+
                         <br/>
+                        <label for="withdrawal-password"> Password:  </label>
                         <br/>
-                            <label for="withdrawal-password"> Password:  </label>
-                        <br/>
-                            <input 
+                        <input 
                             id="withdrawal-password" 
-                            type="text" 
+                            type="password" 
                             name="password" 
                             required="required"
                             placeholder="Input password"
                             onChange={HandleWithdrawFormChange}
-                            />
+                        />
+                        <p id="errorPasswordWithdraw"> Password is incorrect </p>
                         <br/>
+                        <button type="submit">submit</button>
                         <br/>
-                            <button type="submit">submit</button>
+                        <p id="succcessWithdraw"> Withdrawal successful. Thank you for Banking with us. </p>
                     </div>
                 </form>
             </div>
@@ -69,33 +73,39 @@ function Bankservices() {
                 <form onSubmit={HandleDepositFormSubmit}>
                     <legend>Deposit</legend>
                     <div>
-                            <label for="deposit-username"> Username:  </label>
+                        <label for="deposit-username"> Username:  </label>
                         <br/>
-                            <input 
-                                id="deposit-username" 
-                                type="text" 
-                                name="userName"
-                                required="required"
-                                placeholder="Input username"
-                                onChange={HandleDepositFormChange}
-                            />
+                        <input 
+                            id="deposit-username" 
+                            type="text" 
+                            name="userName"
+                            required="required"
+                            placeholder="Input username"
+                            onChange={HandleDepositFormChange}
+                        />
+                        <p id="errorUserNameDeposit"> Username does not exist </p>
+
+                        <br/>
+                        <label for="deposit-amount"> Amount:  </label>
+                        <br/>
+                        <input 
+                            id="deposit-amount" 
+                            type="number"
+                            min= "0.000"
+                            step="0.001"
+                            precision={2}
+                            name="balance" 
+                            required="required"
+                            placeholder="Amount to be deposited"
+                            onChange={HandleDepositFormChange}
+                        />
                         <br/>
                         <br/>
-                            <label for="deposit-amount"> Amount:  </label>
                         <br/>
-                            <input 
-                                id="deposit-amount" 
-                                type="number"
-                                min= "0.000"
-                                step="0.001"
-                                precision={2}
-                                name="balance" 
-                                required="required"
-                                placeholder="Amount to be deposited"
-                                onChange={HandleDepositFormChange}/>
-                        <br/>
-                        <br/>
+
                         <button type="submit">submit</button>
+                        <br/>
+                        <p id="succcessDeposit"> Deposit successful. Thank you for Banking with us. </p>
                     </div>
                 </form>
             </div>
@@ -104,58 +114,63 @@ function Bankservices() {
                 <form onSubmit={HandleTransferFormSubmit}>
                     <legend>Transfer</legend>
                     <div>
-                            <label for="transfer-from-username"> Sender's Username:  </label>
+                        <label for="transfer-from-username"> Sender's Username:  </label>
                         <br/>
-                            <input 
-                                id="transfer-from-username" 
-                                type="text" 
-                                name="userName" 
-                                required="required" 
-                                placeholder="Input sender's username"
-                                onChange={HandleTransferOriginFormChange}
-                            />
+                        <input 
+                            id="transfer-from-username" 
+                            type="text" 
+                            name="userName" 
+                            required="required" 
+                            placeholder="Input sender's username"
+                            onChange={HandleTransferOriginFormChange}
+                        />
+                        <p id="errorUserNameTransferOrigin"> Username does not exist </p>
+
                         <br/>
+                        <label for="transfer-to-username"> Receiver's Username:  </label>
                         <br/>
-                            <label for="transfer-to-username"> Receiver's Username:  </label>
+                        <input 
+                            id="transfer-to-username" 
+                            type="text" 
+                            name="userName" 
+                            required="required" 
+                            placeholder="Input receiver's username"
+                            onChange={HandleTransferReceiveFormChange}
+                        />
+                        <p id="errorUserNameTransferReceiver"> Username does not exist </p>
+
                         <br/>
-                            <input 
-                                id="transfer-to-username" 
-                                type="text" 
-                                name="userName" 
-                                required="required" 
-                                placeholder="Input receiver's username"
-                                onChange={HandleTransferReceiveFormChange}
-                            />
+                        <label for="transfer-amount"> Amount:  </label>
                         <br/>
+                        <input 
+                            id="transfer-amount" 
+                            type="number"
+                            min= "0.000"
+                            step="0.001"
+                            precision={2}
+                            name="balance" 
+                            required="required" 
+                            placeholder="Amount to be transfered"
+                            onChange={HandleTransferOriginFormChange}
+                        />
+                        <p id="errorBalanceTransfer"> Insufficient balance </p>
+
                         <br/>
-                            <label for="transfer-amount"> Amount:  </label>
+                        <label for="transfer-password"> Password:  </label>
                         <br/>
-                            <input 
-                                id="transfer-amount" 
-                                type="number"
-                                min= "0.000"
-                                step="0.001"
-                                precision={2}
-                                name="balance" 
-                                required="required" 
-                                placeholder="Amount to be transfered"
-                                onChange={HandleTransferOriginFormChange}
-                            />
-                        <br/>
-                        <br/>
-                            <label for="transfer-password"> Password:  </label>
-                        <br/>
-                            <input 
-                                id="transfer-password" 
-                                type="text" 
-                                name="password"
-                                required="required" 
-                                placeholder="Input password"
-                                onChange={HandleTransferOriginFormChange}
-                            />
-                        <br/>
+                        <input 
+                            id="transfer-password" 
+                            type="password" 
+                            name="password"
+                            required="required" 
+                            placeholder="Input password"
+                            onChange={HandleTransferOriginFormChange}
+                        />
+                        <p id="errorPasswordTransfer"> Password is incorrect </p>
                         <br/>                    
-                            <button type="submit">submit</button>
+                        <button type="submit">submit</button>
+                        <br/>
+                        <p id="succcessTransfer"> Fund transfer successful. Thank you for Banking with us. </p>
                     </div>
                 </form>
             </div>

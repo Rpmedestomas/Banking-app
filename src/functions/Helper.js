@@ -58,13 +58,40 @@ export default function Helper() {
             password: addFormData.password
         };
 
-        //Stores newContact and contacts to newContacts
-        const newContacts = [...contacts, newContact]
-        //Changes the state of contacts to newContact
-        //Which becomes the part of '...contacts' as more newContacts are added
-        setContacts(newContacts);
-        //Stores a string that contains all the newContacts to a localStorage
-        localStorage.setItem("newContacts",JSON.stringify(newContacts))
+        const searchUserName = addFormData.userName
+        const searchEmail = addFormData.email
+        const searchFullName = addFormData.fullName
+
+
+        const newContacts = [...contacts]
+
+        const indexUserName = contacts.findIndex((contact) => contact.userName === searchUserName)
+        const matchUserName = newContacts[indexUserName]
+
+        const indexEmail = contacts.findIndex((contact) => contact.email === searchEmail)
+        const matchEmail = newContacts[indexEmail]
+
+        var regEx = /^[^0-9]+$/; 
+        var errorFullName = document.getElementById('errorFullName')
+        var errorUserName = document.getElementById('errorUserName')
+        var errorEmail = document.getElementById('errorEmail')
+        var accountSuccess = document.getElementById('accountSuccess')
+
+        if( matchUserName === undefined){
+            errorUserName.style.opacity = 0;
+            errorFullName.style.opacity = 0; 
+            errorEmail.style.opacity = 0;
+            accountSuccess.style.opacity = 0;
+
+            if(regEx.test(searchFullName)){
+                if( matchEmail === undefined){
+                    const newContacts = [...contacts, newContact]
+                    setContacts(newContacts);
+                    localStorage.setItem("newContacts",JSON.stringify(newContacts))
+                    accountSuccess.style.opacity = 999
+                } else{ errorEmail.style.opacity = 999}
+            } else { errorFullName.style.opacity = 999}
+        } else{ errorUserName.style.opacity = 999}
     };
 
 //Powers the button to allow changing of contents initially submitted by the user
@@ -149,9 +176,6 @@ export default function Helper() {
         setEditContactId(null);
     };
 
-
-
-
 ////////////// BANK SERVICES
 
     ////////Withdraw
@@ -178,24 +202,28 @@ export default function Helper() {
         const userInfoWithdraw = [...contacts]
         const indexWithdraw = contacts.findIndex((contact) => contact.userName === searchUserNameWithdraw)
         const matchWithdraw = userInfoWithdraw[indexWithdraw]
-     
-        if ( matchWithdraw !== undefined){
+        
+        const errorUserNameWithdraw = document.getElementById('errorUserNameWithdraw')
+        const errorBalanceWithdraw = document.getElementById('errorBalanceWithdraw')
+        const errorPasswordWithdraw = document.getElementById('errorPasswordWithdraw')
+        const succcessWithdraw = document.getElementById('succcessWithdraw')
+
+        succcessWithdraw.style.opacity = 0;
+
+        if ( matchWithdraw !== undefined ){
+            errorUserNameWithdraw.style.opacity = 0;
+            errorPasswordWithdraw.style.opacity = 0;
+            errorBalanceWithdraw.style.opacity = 0;
+            
             if( matchWithdraw.password === searchPassword){
                 if( matchWithdraw.balance >= withdrawFormData.balance){
                     const updatedBalanceWithdraw = parseFloat(matchWithdraw.balance) - parseFloat(withdrawFormData.balance)
                     setContacts([...contacts], matchWithdraw.balance = updatedBalanceWithdraw)
                     localStorage.setItem("newContacts",JSON.stringify(contacts))
-                    alert(`Success`)
-                } else{
-                    alert(`insufficient balance`)
-                }
-            } else {
-                alert(`password is incorrect`)
-            }
-        } else{
-            alert(searchUserNameWithdraw + ` does not exist`)
-        }
-        console.log(matchWithdraw)
+                    succcessWithdraw.style.opacity = 999;
+                } else{ errorBalanceWithdraw.style.opacity = 999 }
+            } else { errorPasswordWithdraw.style.opacity = 999 }
+        } else{ errorUserNameWithdraw.style.opacity = 999 }
     }
 
     ////////Deposit
@@ -222,13 +250,19 @@ export default function Helper() {
         const indexDeposit = contacts.findIndex((contact) => contact.userName === searchUserNameDeposit)
         const matchDeposit = userInfoDeposit[indexDeposit]
         
+        const errorUserNameDeposit = document.getElementById('errorUserNameDeposit')
+        const succcessDeposit = document.getElementById('succcessDeposit')
+
+
         if( matchDeposit !== undefined){
+            errorUserNameDeposit.style.opacity = 0;
             const updatedBalanceDeposit = parseFloat(matchDeposit.balance) + parseFloat(depositFormData.balance)
             setContacts([...contacts], matchDeposit.balance = updatedBalanceDeposit)
             localStorage.setItem("newContacts",JSON.stringify(contacts))
-            alert(`Success`)
-        } else{
-            alert(searchUserNameDeposit + ` does not exist`)
+            succcessDeposit.style.opacity = 999;
+        } else{ 
+            errorUserNameDeposit.style.opacity = 999 
+            succcessDeposit.style.opacity = 0;
         }
     }
 
@@ -278,19 +312,31 @@ export default function Helper() {
         const indexTransferReceive = contacts.findIndex((contact) => contact.userName === searchUserNameTransferReceive)
         const matchTransferReceive = userInfoTransfer[indexTransferReceive]
         
-        if(matchTransferOrigin !== undefined){
-            if( matchTransferOrigin.password === searchPassword){
-                if( matchTransferOrigin.balance >= transferOriginFormData.balance){
-                    if(matchTransferReceive !== undefined){
+        const errorUserNameTransferOrigin = document.getElementById('errorUserNameTransferOrigin')
+        const errorUserNameTransferReceiver = document.getElementById('errorUserNameTransferReceiver')
+        const errorBalanceTransfer = document.getElementById('errorBalanceTransfer')
+        const errorPasswordTransfer = document.getElementById('errorPasswordTransfer')
+        const succcessTransfer = document.getElementById('succcessTransfer')
+
+        if( matchTransferOrigin !== undefined ){
+            errorUserNameTransferOrigin.style.opacity = 0;
+            errorUserNameTransferReceiver.style.opacity = 0;
+            errorBalanceTransfer.style.opacity = 0;
+            errorPasswordTransfer.style.opacity = 0;
+            succcessTransfer.style.opacity = 0;
+            
+            if( matchTransferOrigin.password === searchPassword ){
+                if( matchTransferOrigin.balance >= transferOriginFormData.balance ){
+                    if( matchTransferReceive !== undefined ){
                         const updatedBalanceTransferOrigin = parseFloat(matchTransferOrigin.balance) - parseFloat(transferOriginFormData.balance)
                         const updatedBalanceTransferReceive = parseFloat(matchTransferReceive.balance) + parseFloat(transferOriginFormData.balance)
                         setContacts([...contacts], matchTransferOrigin.balance = updatedBalanceTransferOrigin, matchTransferReceive.balance = updatedBalanceTransferReceive)
                         localStorage.setItem("newContacts",JSON.stringify(contacts))
-                        alert(`Success`)
-                    } else{ alert(searchUserNameTransferReceive + ` does not exist`)}
-                } else{ alert(`insufficient balance`)}
-            } else { alert(`password is incorrect`)}
-        } else { alert(searchUserNameTransferOrigin + ` does not exist`)}
+                        succcessTransfer.style.opacity = 999;
+                    } else{ errorUserNameTransferReceiver.style.opacity = 999 }
+                } else{ errorBalanceTransfer.style.opacity = 999 }
+            } else { errorPasswordTransfer.style.opacity = 999 }
+        } else { errorUserNameTransferOrigin.style.opacity = 999 }
     }
 
     return{

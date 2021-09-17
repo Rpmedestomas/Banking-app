@@ -1,22 +1,20 @@
 .create-account{
-    height: 32%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url(https://st.depositphotos.com/1062085/2561/i/600/depositphotos_25616917-stock-photo-businesswoman-using-a-credit-card.jpg);
     background-repeat: no-repeat;
-    background-size: 300%;
+    background-size: cover;
 
     .create-account-text{
         text-align: center;
         font-size: 2em;
         padding: 5px;
         margin-bottom: 10px;
+        width: 35%;
         
-        p{
-            color: #b11216 ;
-        }
     }
     
     .create-account-form{
@@ -24,13 +22,19 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        
         input{
             margin: 5px;
             border-radius: 10px;
             height: 5vh;
             width: 50vw;
             text-indent: 10px;
+        }
+
+        p{
+            color: #b11216;
+            font-weight: bolder;
+            opacity: 0
         }
 
         button{
@@ -43,5 +47,12 @@
             text-transform: uppercase;
             box-shadow: 0 1px 4px 0 rgba(0,0,50,0.3);
         }
+    }
+
+    h4{
+        font-size: 2em;
+        color: #b11216;
+        font-weight: bolder;
+        opacity: 0
     }
 }
