@@ -13,7 +13,6 @@ export default function AppProvider(props) {
       email: '',
       balance: '',
       password: ''
-      
     })
    
     const [editFormData, setEditFormData] = useState({
