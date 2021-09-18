@@ -136,18 +136,18 @@
   background-color: #fff;
 }
 
-.services-container .services legend {
+.services-container .services form legend {
   font-weight: bolder;
   color: #b11216;
   margin-bottom: 1em;
 }
 
-.services-container .services label {
+.services-container .services form label {
   font-weight: bold;
   margin-left: 1em;
 }
 
-.services-container .services input {
+.services-container .services form input {
   margin-left: 1em;
   margin-top: 0.75em;
   border-radius: 10px;
@@ -157,13 +157,15 @@
   border: 0.5px solid #e9e9e9;
 }
 
-.services-container .services p {
+.services-container .services form p {
+  margin-left: 1em;
+  margin-top: 0.5em;
   color: #b11216;
-  font-weight: 500;
+  font-weight: bold;
   opacity: 0;
 }
 
-.services-container .services button {
+.services-container .services form button {
   margin-bottom: 1em;
   border-radius: 8px;
   padding: 8px 15px;
@@ -173,6 +175,13 @@
   text-transform: uppercase;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
           box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+}
+
+.services-container .services form h4 {
+  color: #b11216;
+  font-weight: bolder;
+  font-size: 1em;
+  opacity: 0;
 }
 
 .ledger {

@@ -64,7 +64,7 @@ function Bankservices() {
                         <br/>
                         <button type="submit">submit</button>
                         <br/>
-                        <p id="succcessWithdraw"> Withdrawal successful. Thank you for Banking with us. </p>
+                        <h4 id="succcessWithdraw"> Withdrawal successful. Thank you for Banking with us. </h4>
                     </div>
                 </form>
             </div>
@@ -105,7 +105,7 @@ function Bankservices() {
 
                         <button type="submit">submit</button>
                         <br/>
-                        <p id="succcessDeposit"> Deposit successful. Thank you for Banking with us. </p>
+                        <h4 id="succcessDeposit"> Deposit successful. Thank you for Banking with us. </h4>
                     </div>
                 </form>
             </div>
@@ -170,7 +170,7 @@ function Bankservices() {
                         <br/>                    
                         <button type="submit">submit</button>
                         <br/>
-                        <p id="succcessTransfer"> Fund transfer successful. Thank you for Banking with us. </p>
+                        <h4 id="succcessTransfer"> Fund transfer successful. Thank you for Banking with us. </h4>
                     </div>
                 </form>
             </div>

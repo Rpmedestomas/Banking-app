@@ -19,44 +19,53 @@
             margin-top: 20px;
             padding: 15px;
             background-color: #fff;
-        }
-        
-        legend {
-            font-weight: bolder;
-            color: #b11216;
-            margin-bottom: 1em;
-        }
+            
+            legend {
+                font-weight: bolder;
+                color: #b11216;
+                margin-bottom: 1em;
+            }
+    
+            label{
+                font-weight: bold;
+                margin-left: 1em;
+            }
+            input{
+                margin-left: 1em;
+                margin-top: 0.75em;
+                border-radius: 10px;
+                height: 5vh;
+                width: 70vw;
+    
+                text-indent: 15px;
+                border: 0.5px solid rgb(233, 233, 233);
+            }
+    
+            p{
+                margin-left: 1em;
+                margin-top: 0.5em;
+                color: #b11216;
+                font-weight: bold;
+                opacity: 0;
+            }
+    
+            button{
+                margin-bottom: 1em;
+                border-radius: 8px;
+                padding: 8px 15px;
+                background-color: #b11216;
+                color: #fff;
+                font-weight: 500;
+                text-transform: uppercase;
+                box-shadow: 0 1px 4px 0 rgba(0,0,50,0.3);
+            }
 
-        label{
-            font-weight: bold;
-            margin-left: 1em;
-        }
-        input{
-            margin-left: 1em;
-            margin-top: 0.75em;
-            border-radius: 10px;
-            height: 5vh;
-            width: 70vw;
-
-            text-indent: 15px;
-            border: 0.5px solid rgb(233, 233, 233);
-        }
-
-        p{
-            color: #b11216;
-            font-weight: 500;
-            opacity: 0;
-        }
-
-        button{
-            margin-bottom: 1em;
-            border-radius: 8px;
-            padding: 8px 15px;
-            background-color: #b11216;
-            color: #fff;
-            font-weight: 500;
-            text-transform: uppercase;
-            box-shadow: 0 1px 4px 0 rgba(0,0,50,0.3);
+            h4{
+                color: #b11216;
+                font-weight: bolder;
+                font-size: 1em;
+                opacity: 0;
+            }
         }
     }
 }
